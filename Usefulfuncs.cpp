@@ -64,6 +64,12 @@ unsigned int read_file_line_to_buffer(std::ifstream & ifile, char * line, unsign
     return offset;
 }
 
+bool str_cmp(char * s1, char * s2) {
+    unsigned int offset = 0;
+    while (s1[offset] == s2[offset] && s1[offset]!='\0' && s2[offset]!='\0') offset++;
+    return s1[offset] == s2[offset];
+}
+
 data convert_to_data(bool d) {
     data output;
     output.type = 0;

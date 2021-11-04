@@ -6,8 +6,10 @@ CONFIG -= qt
 SOURCES += \
         Usefulfuncs.cpp \
         main.cpp \
-        ship.cpp
+        ship.cpp \
+        useless_task_dangerzone/keeper.cpp
 
 HEADERS += \
     Usefulfuncs.h \
-    ship.h
+    ship.h \
+    useless_task_dangerzone/keeper.h

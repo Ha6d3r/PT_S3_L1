@@ -20,6 +20,8 @@ class Ship {
         virtual void         set_data_id(int id,data d);
         virtual data         get_data_id(int id);
 
+        virtual char *       get_type();
+
         virtual void         save(std::ofstream & file, bool bin = true);
         virtual void         load(std::ifstream & file, bool bin = true);
 

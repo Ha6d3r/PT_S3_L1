@@ -50,6 +50,8 @@ unsigned int str_size(char * str);
 
 unsigned int read_file_line_to_buffer(std::ifstream & ifile, char * line, unsigned int buffer_size,char sep = '\n');
 
+bool str_cmp(char * s1, char * s2);
+
 // could use templates
 data convert_to_data(bool d);
 data convert_to_data(char d);

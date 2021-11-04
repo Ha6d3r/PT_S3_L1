@@ -36,6 +36,7 @@ Ship::Ship(int data_count, char ** data_names, data * Data, char * t) {
 
 Ship::Ship(const Ship &obj) {
     data_count = obj.data_count;
+    data_names = static_cast<char **>(malloc(sizeof(char*) * data_count));
     for (int i = 0; i < data_count; ++i) {
         data_names[i] = copy_str(obj.data_names[i]);
     }
@@ -114,6 +115,10 @@ unsigned int Ship::size() {
 
 data * Ship::get_data() {
     return Data;
+}
+
+char * Ship::get_type() {
+    return type;
 }
 
 void Ship::set_data_id(int id, data d) {
