@@ -6,6 +6,7 @@
 int main()
 {
 
+    /*
     data Data[3];
 
     char ** Names = static_cast<char **>(malloc(sizeof(char*) * 3));
@@ -18,7 +19,7 @@ int main()
     Names[2] = static_cast<char *>(malloc(sizeof(char) * 5));
     Names[2][0] = 'e'; Names[2][1] = 'f'; Names[2][2] = 'h'; Names[2][3] = 'g'; Names[2][4] = 0;
 
-    char test_string[3] = {'t','s',0};
+    char test_string[] = "frdgthyjjjjjjjjjjj\0";
 
     Data[0] = convert_to_data(5);
     Data[1] = convert_to_data(1.245f);
@@ -32,6 +33,19 @@ int main()
     free(Names);
 
     test.show();
+    */
+
+    Ship test;
+
+    std::ifstream file("C:\\Users\\Ha6Ki\\Documents\\PT_S3_L1\\test.txt");
+
+    //test.save(file,false);
+
+    test.load(file,false);
+
+    test.show();
+
+    file.close();
 
     //cout << "Hello World!" << endl;
     return 0;

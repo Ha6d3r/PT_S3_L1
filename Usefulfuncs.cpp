@@ -50,6 +50,19 @@ unsigned int str_size(char * str) {
     return size;
 }
 
+unsigned int read_file_line_to_buffer(std::ifstream & ifile, char * line, unsigned int buffer_size, char sep) {
+    char ch;
+    unsigned int offset = 0;
+
+    // too slow
+    ifile.read(&ch,1);
+    line[offset++] = ch;
+    while (ch != sep && offset != buffer_size) {
+        ifile.read(&ch,1);
+        line[offset++] = ch;
+    }
+    return offset;
+}
 
 data convert_to_data(bool d) {
     data output;

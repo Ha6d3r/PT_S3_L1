@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <malloc.h>
+#include <cstdio>
+#include <fstream>
 
 /*  data sepcification
  *
@@ -21,7 +23,8 @@ const unsigned char link_box_down [4]   =  {32,32,179,0};                       
 const unsigned char link_box_end  [4]   =  {32,32,192,0};                                   //   └
 
 typedef struct data_container {
-    unsigned char type;
+    //unsigned char type;
+    unsigned int  type;
     unsigned int  size;
     void *        data;
 } data;
@@ -44,6 +47,8 @@ unsigned char * copy_bytes(unsigned char * byte_array, unsigned int size);
 data * copy_data(data * Data, int data_count);
 
 unsigned int str_size(char * str);
+
+unsigned int read_file_line_to_buffer(std::ifstream & ifile, char * line, unsigned int buffer_size,char sep = '\n');
 
 // could use templates
 data convert_to_data(bool d);

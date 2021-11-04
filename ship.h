@@ -3,6 +3,7 @@
 
 #include <malloc.h>
 #include <Usefulfuncs.h>
+#include <fstream>
 
 class Ship {
     public:
@@ -19,13 +20,19 @@ class Ship {
         virtual void         set_data_id(int id,data d);
         virtual data         get_data_id(int id);
 
+        virtual void         save(std::ofstream & file, bool bin = true);
+        virtual void         load(std::ifstream & file, bool bin = true);
+
     private:
-        int      data_count;
-        data *   Data;
-        char **  data_names;
+        // vars in order of saving
+        int          data_count;
         unsigned int avg_data_name_len = 0;
 
-        char *   type;
+        char *       type;
+
+        data *       Data;
+        char **      data_names;
+
 };
 
 #endif // SHIP_H
