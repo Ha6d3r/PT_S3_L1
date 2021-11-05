@@ -12,4 +12,5 @@ SOURCES += \
 HEADERS += \
     Usefulfuncs.h \
     ship.h \
+    useless_task_dangerzone/exceptions.h \
     useless_task_dangerzone/keeper.h

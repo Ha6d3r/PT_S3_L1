@@ -7,30 +7,6 @@
 // used only for file path
 #include <string>
 
-struct WrongFileFormat : public std::exception {
-    const char * what () const throw () {
-        return "\033[1;31mWrong file format\033[0m";
-    }
-};
-
-struct NoSuchFileOrDirectory : public std::exception {
-    const char * what () const throw () {
-        return "\033[1;31mNo such file or directory\033[0m";
-    }
-};
-
-struct IncorrectDataParam : public std::exception {
-    const char * what () const throw () {
-        return "\033[1;31mFile data param is wrong (0 objects etc...)\033[0m";
-    }
-};
-
-struct CorruptedFile : public std::exception {
-    const char * what () const throw () {
-        return "\033[1;31mFile is broken, too short or some data is missing\033[0m";
-    }
-};
-
 class Keeper {
     public:
         Keeper();
@@ -45,6 +21,9 @@ class Keeper {
         void    add(Ship & obj);
         void    rem(unsigned int id, char * type = nullptr);
 
+        void    call_menu(unsigned int id, bool menu);
+        void    draw_menu();
+
     private:
 
         void    clean();
@@ -52,6 +31,16 @@ class Keeper {
 
         Ship ** container = nullptr;
         unsigned int count = 0;
+
+        std::string menu[7] = {
+            "Show",
+            "Select/Edit",
+            "Add",
+            "Remove",
+            "Save",
+            "Load",
+            "Exit"
+        };
 
 };
 

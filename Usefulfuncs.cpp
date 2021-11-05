@@ -53,14 +53,17 @@ unsigned int str_size(char * str) {
 unsigned int read_file_line_to_buffer(std::ifstream & ifile, char * line, unsigned int buffer_size, char sep) {
     char ch;
     unsigned int offset = 0;
+    unsigned int bytes_read;
 
     // too slow
     ifile.read(&ch,1);
     line[offset++] = ch;
     while (ch != sep && offset != buffer_size) {
-        ifile.read(&ch,1);
-        line[offset++] = ch;
+        bytes_read = ifile.readsome(&ch,1);
+        if (bytes_read != 1) throw UnexpectedFileEnd();
+        line[offset++] = (ch == '\n') ? '\0' : ch;
     }
+
     return offset;
 }
 
@@ -68,6 +71,15 @@ bool str_cmp(char * s1, char * s2) {
     unsigned int offset = 0;
     while (s1[offset] == s2[offset] && s1[offset]!='\0' && s2[offset]!='\0') offset++;
     return s1[offset] == s2[offset];
+}
+
+char * std_string_to_char(std::string str) {
+    char * output = static_cast<char *>(malloc(sizeof(char) * str.length() + 1));
+    for (int i = 0; i < str.length(); ++i) {
+        output[i] = str[i];
+    }
+    output[str.length()] = '\0';
+    return output;
 }
 
 data convert_to_data(bool d) {
