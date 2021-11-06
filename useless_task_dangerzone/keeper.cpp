@@ -160,11 +160,10 @@ void Keeper::remove_and_move(unsigned int id) {
 
 void Keeper::rem(unsigned int id, char * type) {
     if (id > 0) {
-        id--;
-        if (id >= count) {
+        if (id > count) {
             std::cout << big_dash << " \033[1;31mID is out of range\033[0m" << std::endl;
         } else {
-            remove_and_move(id);
+            remove_and_move(id-1);
         }
     } else {
         if (type == nullptr) {
@@ -415,7 +414,7 @@ void Keeper::draw_menu() {
                                     std::cout << "\033[31mInvalid argument\033[0m\n";
                                 }
                             }
-                            tmp_obj.add_param(std_string_to_char("Underwater time"),convert_to_data(command_float));
+                            tmp_obj.add_param(std_string_to_char("UnderwaterTime"),convert_to_data(command_float));
 
                             command_float = -1;
                             while (command_float < 0) {
@@ -429,7 +428,7 @@ void Keeper::draw_menu() {
                                     std::cout << "\033[31mInvalid argument\033[0m\n";
                                 }
                             }
-                            tmp_obj.add_param(std_string_to_char("Max speed"),convert_to_data(command_float));
+                            tmp_obj.add_param(std_string_to_char("MaxSpeed"),convert_to_data(command_float));
 
                             std::cout << "\033[30m\033[47m Weapons         \033[0m -> ";
                             std::cin  >> command;
